@@ -19,6 +19,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setupEvents()
+        setValues()
+    }
+
+//    별도의 이벤트처리
+    fun setupEvents() {
+
+    }
+
+//    최초 초기화
+    fun setValues() {
+
+        getDataFromServer()
+
+        mRoomAdapter = RoomRecyclerViewAdapter(this, mRoomList)
+        binding.roomRecyclerView.adapter = mRoomAdapter
+
+//        리싸이클러뷰는 LayoutManager를 설정
+        binding.roomRecyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    fun getDataFromServer () {
+
+        mRoomList.clear()
 
 //        더미 데이터 생성
         mRoomList.add( RoomData(8000, "마포구 서교동", 1, "망원/홍대역 풀옵션 넓은 원룸") )
@@ -32,10 +56,6 @@ class MainActivity : AppCompatActivity() {
         mRoomList.add( RoomData(26000, "마포구 연남동", 3, "강추!! 홍대역 테라스 넓은 원룸") )
         mRoomList.add( RoomData(5500, "마포구 연남동", 0, "홍대역 풀옵션 원룸") )
 
-        mRoomAdapter = RoomRecyclerViewAdapter(this, mRoomList)
-        binding.roomRecyclerView.adapter = mRoomAdapter
-
-//        리싸이클러뷰는 LayoutManager를 설정
-        binding.roomRecyclerView.layoutManager = LinearLayoutManager(this)
+        mRoomAdapter.notifyDataSetChanged()
     }
 }
