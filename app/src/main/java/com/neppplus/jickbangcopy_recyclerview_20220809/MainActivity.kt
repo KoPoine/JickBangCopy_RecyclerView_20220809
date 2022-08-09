@@ -36,6 +36,6 @@ class MainActivity : AppCompatActivity() {
         binding.roomRecyclerView.adapter = mRoomAdapter
 
 //        리싸이클러뷰는 LayoutManager를 설정
-        binding.roomRecyclerView.layoutManager = LinearLayoutManager(this, )
+        binding.roomRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

@@ -1,11 +1,14 @@
 package com.neppplus.jickbangcopy_recyclerview_20220809.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.neppplus.jickbangcopy_recyclerview_20220809.MainActivity
 import com.neppplus.jickbangcopy_recyclerview_20220809.R
 import com.neppplus.jickbangcopy_recyclerview_20220809.datas.RoomData
 
@@ -26,6 +29,10 @@ class RoomRecyclerViewAdapter(
             addressTxt.text = "${item.address}, "
             levelTxt.text = item.getFormattedLevel()
             descriptionTxt.text = item.description
+
+            itemView.setOnClickListener {
+                Toast.makeText(mContext, item.getFormattedPrice(), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
